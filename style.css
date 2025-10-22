@@ -1,0 +1,72 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #1e1e1e;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;  
+}
+
+h1 , textarea , button{
+    user-select: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.note-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+button {
+  background: #0078ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #005fcc;
+}
+
+.note {
+  background: #2a2a2a;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: crimson;
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
