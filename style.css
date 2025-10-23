@@ -1,3 +1,5 @@
+/* ---------------------- Body ---------------------- */
+/* General page styling: font, background, text color, layout */
 body {
   font-family: Arial, sans-serif;
   background: #1e1e1e;
@@ -10,27 +12,33 @@ body {
   padding: 20px;  
 }
 
-h1 , textarea , button{
+/* Prevent text selection on certain elements */
+h1, textarea, button, .error {
     user-select: none;
 }
 
+/* ---------------------- Container ---------------------- */
+/* Main container width and responsive max-width */
 .container {
   width: 90%;
   max-width: 600px;
 }
+
+/* ---------------------- Heading ---------------------- */
 h1 {
   text-align: center;
   margin-bottom: 20px;
 }
 
+/* ---------------------- Note Input Section ---------------------- */
 .note-input {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 10px; /* space between textarea and button */
 }
 
 textarea {
-  resize: none;
+  resize: none;       /* prevent resizing */
   height: 100px;
   padding: 10px;
   border: none;
@@ -44,21 +52,23 @@ button {
   padding: 10px;
   border-radius: 6px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.2s; /* smooth hover effect */
 }
 
 button:hover {
   background: #005fcc;
 }
 
+/* ---------------------- Individual Note ---------------------- */
 .note {
   background: #2a2a2a;
   padding: 15px;
   border-radius: 6px;
   margin-top: 10px;
-  position: relative;
+  position: relative; /* for positioning delete/edit buttons */
 }
 
+/* ---------------------- Delete Button ---------------------- */
 .delete-btn {
   position: absolute;
   top: 8px;
@@ -70,6 +80,8 @@ button:hover {
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* ---------------------- Edit Button ---------------------- */
 .edit-btn {
   position: absolute;
   top: 8px;
@@ -81,12 +93,46 @@ button:hover {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .edit-btn:hover {
   background: #e0a000;
 }
+
+/* ---------------------- Editable Note Text ---------------------- */
 .note-text[contenteditable="true"] {
-  outline: 2px dashed #555;
+  outline: 2px dashed #555; /* visual indicator for editing */
   background: #333;
   border-radius: 4px;
   padding: 4px;
+}
+
+/* ---------------------- Error Message ---------------------- */
+.error {
+  color: #ff5555;
+  font-size: 14px;
+  margin-top: 10px;
+  height: auto;
+  text-align: center;
+  opacity: 0;                 /* hidden by default */
+  padding: 6px 10px;
+  border: 1px solid #ff5555;
+  border-radius: 6px;
+  display: inline-block;
+  transform: translateX(0);
+  transition: opacity 0.5s ease; /* smooth fade in/out */
+}
+
+/* Show error and trigger shake */
+.error.show {
+  opacity: 1;
+  animation: shake 0.3s;
+}
+
+/* ---------------------- Shake Animation ---------------------- */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
