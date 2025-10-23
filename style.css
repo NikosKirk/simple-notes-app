@@ -70,3 +70,23 @@ button:hover {
   border-radius: 4px;
   cursor: pointer;
 }
+.edit-btn {
+  position: absolute;
+  top: 8px;
+  right: 40px;
+  background: #ffb400;
+  border: none;
+  color: #000;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.edit-btn:hover {
+  background: #e0a000;
+}
+.note-text[contenteditable="true"] {
+  outline: 2px dashed #555;
+  background: #333;
+  border-radius: 4px;
+  padding: 4px;
+}
