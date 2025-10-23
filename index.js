@@ -23,11 +23,12 @@ function renderNotes() {
     // Create note content: text + edit & delete buttons
     noteDiv.innerHTML = `
       <p class="note-text" contenteditable="false">${note}</p>
-      <div class="note-buttons">
-        <button class="edit-btn" onclick="editNote(${index}, this)">✎</button>
-        <button class="delete-btn" onclick="deleteNote(${index})">X</button>
-      </div>
-    `;
+        <div class="note-buttons">
+          <button class="edit-btn" onclick="editNote(${index}, this)">✎</button>
+          <button class="delete-btn" onclick="deleteNote(${index})">X</button>
+        </div>
+`;
+
 
     notesContainer.appendChild(noteDiv);
   });

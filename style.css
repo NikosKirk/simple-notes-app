@@ -70,9 +70,6 @@ button:hover {
 
 /* ---------------------- Delete Button ---------------------- */
 .delete-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
   background: crimson;
   border: none;
   color: white;
@@ -83,9 +80,6 @@ button:hover {
 
 /* ---------------------- Edit Button ---------------------- */
 .edit-btn {
-  position: absolute;
-  top: 8px;
-  right: 40px;
   background: #ffb400;
   border: none;
   color: #000;
@@ -97,7 +91,16 @@ button:hover {
 .edit-btn:hover {
   background: #e0a000;
 }
-
+.note-buttons {
+  position: absolute;
+  top: -5px;
+  right: 8px;
+  display: flex;
+  gap: 8px; 
+}
+ .edit-btn, .delete-btn{
+  position: static; 
+}
 /* ---------------------- Editable Note Text ---------------------- */
 .note-text[contenteditable="true"] {
   outline: 2px dashed #555; /* visual indicator for editing */
