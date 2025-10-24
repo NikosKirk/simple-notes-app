@@ -56,7 +56,14 @@ button {
 }
 
 button:hover {
-  background: #005fcc;
+    background: #005fcc;
+    transform: scale(1.05);  /* ← Much more subtle */
+    transition: 0.2s;       /* ← Faster transition */
+}
+
+button:active {
+    transform: scale(0.95);  /* ← Slightly smaller on click */
+    transition: 0.1s;
 }
 
 /* ---------------------- Individual Note ---------------------- */
@@ -89,8 +96,9 @@ button:hover {
 }
 
 .edit-btn:hover {
-  background: #e0a000;
+    background: #e0a000;
 }
+
 .note-buttons {
   position: absolute;
   top: -5px;
