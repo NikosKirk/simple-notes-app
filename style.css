@@ -59,6 +59,8 @@ button:hover {
     background: #005fcc;
     transform: scale(1.05);  /* ← Much more subtle */
     transition: 0.2s;       /* ← Faster transition */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+  
 }
 
 button:active {
@@ -69,7 +71,7 @@ button:active {
 /* ---------------------- Individual Note ---------------------- */
 .note {
   background: #2a2a2a;
-  padding: 15px;
+  padding: 40px;
   border-radius: 6px;
   margin-top: 10px;
   position: relative; /* for positioning delete/edit buttons */
@@ -101,14 +103,22 @@ button:active {
 
 .note-buttons {
   position: absolute;
-  top: -5px;
+  top: 10px;
   right: 8px;
   display: flex;
   gap: 8px; 
 }
  .edit-btn, .delete-btn{
-  position: static; 
+  position: static;
+  transform: scale(1.0); 
 }
+ .edit-btn:hover, .delete-btn:hover{
+  transform: scale(1.3);
+}
+ .edit-btn:active, .delete-btn:active{
+  transform: scale(0.95);
+}
+
 /* ---------------------- Editable Note Text ---------------------- */
 .note-text[contenteditable="true"] {
   outline: 2px dashed #555; /* visual indicator for editing */
