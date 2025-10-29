@@ -24,11 +24,11 @@ function renderNotes() {
     noteDiv.innerHTML = `
       <p class="note-text" contenteditable="false">${note}</p>
         <div class="note-buttons">
+          <button class="copy-btn" onclick="copyNote(${index})">📋</button>
           <button class="edit-btn" onclick="editNote(${index}, this)">✎</button>
           <button class="delete-btn" onclick="deleteNote(${index})">X</button>
         </div>
-`;
-
+    `;
 
     notesContainer.appendChild(noteDiv);
   });
@@ -69,6 +69,60 @@ function addNote() {
   saveNotes();       // Save to localStorage
   renderNotes();     // Re-render all notes
   noteText.value = ""; // Clear textarea
+}
+
+// ---------------------- Copy note to clipboard ----------------------
+function copyNote(index) {
+  const noteContent = notes[index];
+  const copyBtn = event.target;
+  
+  // If button is already in "copied" state, ignore click
+  if (copyBtn.textContent === "✓") {
+    return;
+  }
+  
+  // Clipboard API
+  navigator.clipboard.writeText(noteContent)
+    .then(() => {
+      showCopyFeedback(copyBtn);
+    })
+    .catch(err => {
+      console.error('Failed to copy: ', err);
+      // Fallback for older browsers
+      fallbackCopyTextToClipboard(noteContent, copyBtn);
+    });
+}
+
+// ---------------------- Fallback copy method ----------------------
+function fallbackCopyTextToClipboard(text, copyBtn) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  
+  try {
+    document.execCommand('copy');
+    showCopyFeedback(copyBtn);
+  } catch (err) {
+    console.error('Fallback copy failed: ', err);
+    // Last resort - alert the user
+    alert('Copy failed. Please copy manually:\n\n' + text);
+  }
+  
+  document.body.removeChild(textArea);
+}
+
+// ---------------------- Show copy feedback ----------------------
+function showCopyFeedback(copyBtn) {
+  const originalText = copyBtn.textContent;
+  copyBtn.textContent = "✓";
+  copyBtn.style.background = "#00b341";
+  
+  // Reset button after 1 second
+  setTimeout(() => {
+    copyBtn.textContent = originalText;
+    copyBtn.style.background = "";
+  }, 1000);
 }
 
 // ---------------------- Edit existing note ----------------------
