@@ -76,6 +76,8 @@ button:active {
   border-radius: 6px;
   margin-top: 10px;
   position: relative; /* for positioning delete/edit buttons */
+  word-wrap: break-word; 
+  overflow-wrap: break-word; 
 }
 
 /* ---------------------- Delete Button ---------------------- */
